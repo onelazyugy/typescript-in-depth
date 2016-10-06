@@ -1,0 +1,23 @@
+let = use to declare a variable and only available w/in the function and not hoisted
+const = use to declare a constant
+var = same as let but it is global and hoisted to the top
+
+Type: 
+Number
+String
+Boolean
+Array
+Enum
+Any - same as Object in java
+Void - keyword, use as absent of a Type
+
+Declaring variable:
+-------------------
+let myString: string = 'this is a string';
+let num: number = 45;
+
+Function with return type:
+--------------------------
+function ReturnNumber(): number {
+    return 44;
+}
