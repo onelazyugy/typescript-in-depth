@@ -111,8 +111,17 @@ var myBook = {
     pages: 250,
     markDamaged: function (reason) { return console.log('Damaged: ' + reason); }
 };
-PrintBook(myBook);
-myBook.markDamaged('Missing back cover');
+//interfaces
+//PrintBook(myBook);
+//myBook.markDamaged('torn pages');
+//---
+/*
+let logDamage: DamageLogger;
+logDamage = (damage: string) => {
+    console.log('Damage reported: ' + damage);
+};
+logDamage('coffee stains');
+*/
 //function overload
 //let hermansBooks = GetTitles('Herman Melville');
 //hermansBooks.forEach(title=>console.log(title));
