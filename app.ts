@@ -1,4 +1,7 @@
-function GetAllBooks(){
+import {Category} from './enums';
+import {Book} from './interfaces';
+
+function GetAllBooks(): Book[]{
     let books = [
         {id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: Category.Biography},
         {id: 2, title: 'A Farewell to Arms', author: 'Ernest Hemignway', available: false, category: Category.Poetry},
@@ -22,8 +25,6 @@ function LogFirstAvailable(books): void{
     console.log('First Available: ' + firstAvailable);
 }
 
-enum Category {Biography, Poetry, Fiction, History, Children}
-
 function GetBookTitlesByCategory(categoryFilter: Category = Category.Fiction): Array<string>{
     console.log('Getting books in category: ' + Category[categoryFilter]);
     const allBooks = GetAllBooks();
@@ -42,7 +43,7 @@ function LogBookTitles(titles: string[]):void{
     }
 }
 
-function GetBookByID(id: number){
+function GetBookByID(id: number): Book{
     const allBooks = GetAllBooks();
     return allBooks.filter(book => book.id === id)[0];
 }
@@ -86,14 +87,37 @@ function GetTitles(bookProperty: any): string[]{
                 foundTitles.push(book.title);
             }
         }
+    } else if(typeof bookProperty == 'boolean'){
+        //get all books based on specified availability
+        for(let book of allBooks){
+            foundTitles.push(book.title);
+        }
     }
     return foundTitles;;
 }
 
+function PrintBook(book: Book): void {
+    console.log(book.title + ' by ' + book.author);
+}
+
 //
 //**********************************************************
-//function overload
+//interfaces
+let myBook : Book= {
+    id: 5,
+    title: 'Pride and Prejudice',
+    author: 'Jane Austen',
+    available: true,
+    category: Category.Fiction,
+    pages: 250,
+    markDamaged: (reason: string) => console.log('Damaged: ' + reason)
+};
 
+PrintBook(myBook);
+myBook.markDamaged('Missing back cover');
+//function overload
+//let hermansBooks = GetTitles('Herman Melville');
+//hermansBooks.forEach(title=>console.log(title));
 
 //rest param (vargars in JAVA)
 //let myBooks: string[] = CheckoutBooks('Thorne', 1);
