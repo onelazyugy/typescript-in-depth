@@ -1,6 +1,6 @@
 import {Category} from './enums';
 import {Book, DamageLogger, Author, Librarian} from './interfaces';
-import {UniversityLibrarian} from './classes';
+import {UniversityLibrarian, ReferenceItem, AnotherClass} from './classes';
 function GetAllBooks(): Book[]{
     let books = [
         {id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: Category.Biography},
@@ -103,9 +103,20 @@ function PrintBook(book: Book): void {
 //
 //**********************************************************
 //classes
+let ref = new ReferenceItem('New Facts and Figures', 2010);
+ref.printItem();
+
+let another: AnotherClass = new AnotherClass('another class', 2016);
+another.printItem();
+//getter and setter
+another.publisher = 'Random Data Publishing';
+console.log(another.publisher);
+/*
 let person: Librarian = new UniversityLibrarian();
 person.name = 'Viet';
 person.assistCustomer('Lynda');
+*/
+
 //interfaces
 /*
 let myBook : Book= {

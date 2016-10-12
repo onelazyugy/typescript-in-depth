@@ -103,9 +103,18 @@ function PrintBook(book) {
 //
 //**********************************************************
 //classes
-var person = new classes_1.UniversityLibrarian();
+var ref = new classes_1.ReferenceItem('New Facts and Figures', 2010);
+ref.printItem();
+var another = new classes_1.AnotherClass('another class', 2016);
+another.printItem();
+//getter and setter
+another.publisher = 'Random Data Publishing';
+console.log(another.publisher);
+/*
+let person: Librarian = new UniversityLibrarian();
 person.name = 'Viet';
 person.assistCustomer('Lynda');
+*/
 //interfaces
 /*
 let myBook : Book= {
