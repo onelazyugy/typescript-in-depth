@@ -21,3 +21,12 @@ Function with return type:
 function ReturnNumber(): number {
     return 44;
 }
+
+Module that typescript compiler can produce
+--------------------------------------------
+browser uses 'Asynchronous Module Definition' aka AMD
+node uses 'CommonJS'
+type script can also compile to 'Universal Module Definition' aka UMD
+
+System module loader:
+supports 'CommonJS and AMD' 

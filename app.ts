@@ -1,6 +1,11 @@
 import {Category} from './enums';
-import {Book, DamageLogger, Author, Librarian} from './interfaces';
+import {Book, Logger, Author, Librarian} from './interfaces';
 import {UniversityLibrarian, ReferenceItem, AnotherClass} from './classes';
+//import a module
+import {CalculateLateFee as CalcFee, MaxBookAllowed} from './lib/utilityFunctions'
+//import default
+import refBook from './encyclopedia';
+
 function GetAllBooks(): Book[]{
     let books = [
         {id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: Category.Biography},
@@ -102,15 +107,43 @@ function PrintBook(book: Book): void {
 
 //
 //**********************************************************
-//classes
-let ref = new ReferenceItem('New Facts and Figures', 2010);
-ref.printItem();
 
-let another: AnotherClass = new AnotherClass('another class', 2016);
-another.printItem();
+//class expression
+/*
+let Newspaper = class extends AnotherClass {
+    //implement the abstract method
+    printCitation(): void {
+        console.log(`Newspaper: ${this.title}`);
+    }
+}
+
+let myPaper = new Newspaper('The Gazette', 2016);
+myPaper.printCitation();
+
+class Novel extends class {title: string}{
+    mainCharacter: string;
+}
+let favoriteNovel = new Novel();
+favoriteNovel.title; 
+*/
+
+//abstract class
+//let refBook: AnotherClass = new Encyclopedia('WorldPedia', 1900, 10);
+//refBook.printCitation();
+
+//inheritance
+//let refBook = new Encyclopedia('WorldPedia', 1900, 10);
+//refBook.printItem();
+
+//classes
+//let ref = new ReferenceItem('New Facts and Figures', 2010);
+//ref.printItem();
+
+//let another: AnotherClass = new AnotherClass('another class', 2016);
+//another.printItem();
 //getter and setter
-another.publisher = 'Random Data Publishing';
-console.log(another.publisher);
+//another.publisher = 'Random Data Publishing';
+//console.log(another.publisher);
 /*
 let person: Librarian = new UniversityLibrarian();
 person.name = 'Viet';

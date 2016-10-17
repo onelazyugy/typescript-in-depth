@@ -1,5 +1,6 @@
-import {Book, DamageLogger, Author, Librarian} from './interfaces';
-class UniversityLibrarian implements Librarian {
+//import all
+import * as Interfaces from './interfaces';
+class UniversityLibrarian implements Interfaces.Librarian {
     name: string;
     email: string; 
     department: string;
@@ -24,11 +25,11 @@ class ReferenceItem {
 }
 
 //another way to create classes
-class AnotherClass{
+abstract class AnotherClass{
     private _publisher: string;
     static department: string = 'Research';
 
-    constructor(public title: string, private year: number){
+    constructor(public title: string, protected year: number){
         console.log('Creating a new AnotherClass...')
     }
 
@@ -45,5 +46,8 @@ class AnotherClass{
         console.log('setting publisher.....');
         this._publisher = newPublisher;
     }
+    //child class must implement this abstract class 
+    abstract printCitation(): void;
 }
+
 export {UniversityLibrarian, ReferenceItem, AnotherClass};
