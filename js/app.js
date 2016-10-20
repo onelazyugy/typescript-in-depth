@@ -1,5 +1,7 @@
 "use strict";
 var enums_1 = require('./enums');
+//import a module
+var utilityFunctions_1 = require('./lib/utilityFunctions');
 function GetAllBooks() {
     var books = [
         { id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: enums_1.Category.Biography },
@@ -101,6 +103,19 @@ function PrintBook(book) {
 }
 //
 //**********************************************************
+//generic function
+var inventory = [
+    { id: 10, title: 'The C programming language', author: 'K & R', available: true, category: enums_1.Category.Software },
+    { id: 11, title: 'Code Complete', author: 'Steve McConnel', available: true, category: enums_1.Category.Software },
+    { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: enums_1.Category.Software },
+    { id: 13, title: 'Cool autoexec.bat Script', author: 'C. D.', available: true, category: enums_1.Category.Software }
+];
+var purgedBook = utilityFunctions_1.Purge(inventory);
+purgedBook.forEach(function (book) {
+    console.log(book.title);
+});
+var purgedNums = utilityFunctions_1.Purge([1, 2, 3, 4]);
+console.log("number is: " + purgedNums);
 //class expression
 /*
 let Newspaper = class extends AnotherClass {

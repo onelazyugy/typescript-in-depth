@@ -14,3 +14,9 @@ export function MaxBooksAllowed(age: number): number {
 function privateFunc(): void {
     console.log('This is private...');
 }
+
+//a generic function
+export function Purge<T>(inventory: Array<T>): Array<T> {
+    //remove last 2 items from the Array
+    return inventory.splice(2, inventory.length);
+}
