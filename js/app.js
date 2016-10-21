@@ -1,7 +1,6 @@
 "use strict";
 var enums_1 = require('./enums');
-//import a module
-var utilityFunctions_1 = require('./lib/utilityFunctions');
+var shelf_1 = require('./shelf');
 function GetAllBooks() {
     var books = [
         { id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: enums_1.Category.Biography },
@@ -110,12 +109,33 @@ var inventory = [
     { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: enums_1.Category.Software },
     { id: 13, title: 'Cool autoexec.bat Script', author: 'C. D.', available: true, category: enums_1.Category.Software }
 ];
-var purgedBook = utilityFunctions_1.Purge(inventory);
-purgedBook.forEach(function (book) {
+var bookShelf = new shelf_1.default();
+inventory.forEach(function (book) {
+    bookShelf.add(book);
+});
+var firstBook = bookShelf.getFirst();
+console.log("first book: " + firstBook.title);
+var magazine = [
+    { title: 'Programming Language Montly', publisher: 'Code Mags' },
+    { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
+    { title: 'Five Points', publisher: 'GSU' }
+];
+var magazineShelf = new shelf_1.default();
+magazine.forEach(function (mag) { return magazineShelf.add(mag); });
+var firstMagazine = magazineShelf.getFirst();
+console.log("first magazine: " + firstMagazine.title);
+magazineShelf.printTitles();
+var softwareBook = bookShelf.find('Code Complete');
+console.log(softwareBook.title + " (" + softwareBook.author + ")");
+/*
+let purgedBook: Array<Book> = Purge<Book>(inventory);
+purgedBook.forEach(book =>{
     console.log(book.title);
 });
-var purgedNums = utilityFunctions_1.Purge([1, 2, 3, 4]);
-console.log("number is: " + purgedNums);
+
+let purgedNums : Array<number> = Purge<number>([1, 2, 3, 4]);
+console.log(`number is: ${purgedNums}`);
+*/
 //class expression
 /*
 let Newspaper = class extends AnotherClass {

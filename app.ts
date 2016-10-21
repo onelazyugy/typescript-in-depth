@@ -1,10 +1,11 @@
 import {Category} from './enums';
-import {Book, Logger, Author, Librarian} from './interfaces';
+import {Book, Logger, Author, Librarian, Magazine} from './interfaces';
 import {UniversityLibrarian, ReferenceItem, AnotherClass} from './classes';
 //import a module
 import {CalculateLateFee as CalcFee, MaxBooksAllowed, Purge} from './lib/utilityFunctions'
 //import default
 import refBook from './encyclopedia';
+import Shelf from './shelf';
 
 function GetAllBooks(): Book[]{
     let books = [
@@ -115,6 +116,30 @@ let inventory: Array<Book> = [
     {id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software},
     {id: 13, title: 'Cool autoexec.bat Script', author: 'C. D.', available: true, category: Category.Software}
 ];
+
+let bookShelf: Shelf<Book> = new Shelf<Book>();
+inventory.forEach(book =>{
+    bookShelf.add(book);
+});
+
+let firstBook: Book = bookShelf.getFirst();
+console.log(`first book: ${firstBook.title}`);
+
+let magazine: Array<Magazine> = [
+    {title: 'Programming Language Montly', publisher: 'Code Mags'},
+    {title: 'Literary Fiction Quarterly', publisher: 'College Press'},
+    {title: 'Five Points', publisher: 'GSU'}
+];
+
+let magazineShelf: Shelf<Magazine> = new Shelf<Magazine>();
+magazine.forEach(mag => magazineShelf.add(mag));
+let firstMagazine: Magazine = magazineShelf.getFirst();
+console.log(`first magazine: ${firstMagazine.title}`);
+magazineShelf.printTitles();
+
+let softwareBook = bookShelf.find('Code Complete');
+console.log(`${softwareBook.title} (${softwareBook.author})`);
+/*
 let purgedBook: Array<Book> = Purge<Book>(inventory);
 purgedBook.forEach(book =>{
     console.log(book.title);
@@ -122,6 +147,8 @@ purgedBook.forEach(book =>{
 
 let purgedNums : Array<number> = Purge<number>([1, 2, 3, 4]);
 console.log(`number is: ${purgedNums}`);
+*/
+
 //class expression
 /*
 let Newspaper = class extends AnotherClass {
