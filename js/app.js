@@ -103,6 +103,7 @@ function PrintBook(book) {
 //
 //**********************************************************
 //generic function
+/*
 var inventory = [
     { id: 10, title: 'The C programming language', author: 'K & R', available: true, category: enums_1.Category.Software },
     { id: 11, title: 'Code Complete', author: 'Steve McConnel', available: true, category: enums_1.Category.Software },
@@ -127,6 +128,7 @@ console.log("first magazine: " + firstMagazine.title);
 magazineShelf.printTitles();
 var softwareBook = bookShelf.find('Code Complete');
 console.log(softwareBook.title + " (" + softwareBook.author + ")");
+*/
 /*
 let purgedBook: Array<Book> = Purge<Book>(inventory);
 purgedBook.forEach(book =>{
